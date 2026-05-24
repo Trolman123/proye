@@ -11,7 +11,7 @@ services:
     name: gestiopyme-backend
     env: node
     plan: free
-    rootDir: server
+    rootDir: gestiopyme/server
     buildCommand: npm install
     startCommand: npm start
     envVars:
