@@ -1,0 +1,13 @@
+{
+  "name": "gestiopyme-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=client",
+    "install": "npm install --workspaces"
+  }
+}
