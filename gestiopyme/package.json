@@ -7,7 +7,6 @@
     "server"
   ],
   "scripts": {
-    "build": "npm run build --workspace=client",
-    "install": "npm install --workspaces"
+    "build": "npm run build --workspace=client"
   }
 }
