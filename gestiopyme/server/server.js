@@ -57,4 +57,10 @@ const iniciar = async () => {
   }
 };
 
-iniciar();
+// Ejecutar servidor solo si no es importado como módulo (ej. por Vercel)
+if (require.main === module) {
+  iniciar();
+}
+
+// Exportar la app para entornos Serverless como Vercel
+module.exports = app;
