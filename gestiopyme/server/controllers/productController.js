@@ -1,4 +1,4 @@
-const { Product } = require('../models');
+const { Product, sequelize } = require('../models');
 const { Op } = require('sequelize');
 
 const listar = async (req, res) => {
@@ -114,11 +114,15 @@ const categorias = async (req, res) => {
 
 const alertasStock = async (req, res) => {
   try {
-    const productos = await Product.findAll({
-      where: { activo: true },
+    const alertas = await Product.findAll({
+      where: { 
+        activo: true,
+        [Op.and]: [
+          sequelize.where(sequelize.col('stock'), { [Op.lte]: sequelize.col('stock_minimo') })
+        ]
+      },
       order: [['stock', 'ASC']]
     });
-    const alertas = productos.filter(p => p.stock <= p.stock_minimo);
     res.json({ alertas, total: alertas.length });
   } catch (error) {
     res.status(500).json({ mensaje: 'Error al obtener alertas', error: error.message });

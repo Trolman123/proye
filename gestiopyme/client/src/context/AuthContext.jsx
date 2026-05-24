@@ -24,6 +24,12 @@ export const AuthProvider = ({ children }) => {
       }
     }
     setLoading(false);
+
+    const handleAuthError = () => {
+      setUsuario(null);
+    };
+    window.addEventListener('auth-error', handleAuthError);
+    return () => window.removeEventListener('auth-error', handleAuthError);
   }, []);
 
   const login = async (email, password) => {
