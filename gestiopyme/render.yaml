@@ -1,11 +1,11 @@
-services:
+databases:
   # Base de datos PostgreSQL alojada en Render
-  - type: pgo
-    name: gestiopyme-db
+  - name: gestiopyme-db
     databaseName: gestiopyme
     user: gestiopyme_user
     plan: free
 
+services:
   # Backend de Express
   - type: web
     name: gestiopyme-backend
@@ -26,5 +26,4 @@ services:
       - key: NODE_ENV
         value: production
       - key: CLIENT_URL
-        # Reemplaza esto con tu URL real de Netlify cuando se despliegue
-        value: https://tu-sitio-netlify.netlify.app
+        value: https://cheerful-melba-85cb3b.netlify.app
